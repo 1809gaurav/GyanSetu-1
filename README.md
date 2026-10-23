@@ -168,8 +168,9 @@ Set `CHROMIUM_PATH` to use a specific Chromium build.
 4. Deploy. Because this is a single page using hash anchors, no SPA rewrites are needed. Unknown
    paths get the branded `404.html`.
 
-The production bundle was also exercised behind the same CSP used in `vercel.json` with no console or
-CSP errors, including the WebGPU shard field and the lazy three.js scene.
+The production bundle was also exercised behind the CSP directives from `vercel.json` (minus the
+HTTPS upgrade, which does not apply on localhost) with no console or CSP errors, including the
+WebGPU shard field and the lazy three.js scene.
 
 ## Project structure
 

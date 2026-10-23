@@ -26,8 +26,8 @@ export function Contact() {
       </div>
 
       <div className="shell">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
-          <div>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+          <div className="min-w-0">
             <SectionHeading
               eyebrow="04 — Contact"
               id="contact-title"
@@ -59,8 +59,8 @@ export function Contact() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.12}>
-            <div className="relative overflow-hidden rounded-[2rem] border border-navy-900/10 bg-white/80 p-7 shadow-lift backdrop-blur sm:p-9">
+          <Reveal delay={0.12} className="min-w-0">
+            <div className="relative min-w-0 overflow-hidden rounded-[2rem] border border-navy-900/10 bg-white/80 p-7 shadow-lift backdrop-blur sm:p-9">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute -right-20 -top-24 size-64 rounded-full bg-gold-300/30 blur-3xl"
