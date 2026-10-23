@@ -81,7 +81,7 @@ export function Extension() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12">
+        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12">
           <div className="flex flex-col gap-4">
             <Reveal>
               <div className="rounded-3xl border border-navy-900/10 bg-white/75 p-6 shadow-soft">
@@ -117,17 +117,16 @@ export function Extension() {
                   </p>
                   <span className="text-[10px] text-muted/80">single key</span>
                 </div>
-                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3">
+                <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3">
                   {shortcuts.map(({ keys, label }) => (
-                    <div key={label} className="flex items-center gap-2">
+                    <li key={label} className="flex items-center gap-2">
                       {keys.map((key) => (
                         <Keycap key={key}>{key}</Keycap>
                       ))}
-                      <dt className="sr-only">{label}</dt>
-                      <dd className="text-[11px] leading-tight text-muted">{label}</dd>
-                    </div>
+                      <span className="text-[11px] leading-tight text-muted">{label}</span>
+                    </li>
                   ))}
-                </dl>
+                </ul>
                 <p className="mt-4 border-t border-navy-900/10 pt-3 text-[11px] leading-relaxed text-muted">
                   These can be switched off in the extension, and never fire while you are typing.
                 </p>

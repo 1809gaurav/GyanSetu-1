@@ -40,12 +40,11 @@ function FooterLink({
     return (
       <span
         aria-disabled="true"
-        tabIndex={0}
         title="Link coming soon"
         className="flex w-max items-center gap-2 py-1 text-[13px] text-paper/30"
       >
         {label}
-        <span className="rounded-full border border-paper/15 px-1.5 py-0.5 text-[8px] uppercase tracking-[0.14em] text-paper/35">
+        <span className="rounded-full border border-paper/15 px-1.5 py-0.5 text-[8px] uppercase tracking-[0.14em] text-paper/55">
           soon
         </span>
         <span className="sr-only">Link coming soon</span>
@@ -82,7 +81,7 @@ export function Footer() {
         className="pointer-events-none absolute -left-32 top-10 size-[28rem] rounded-full bg-gold-500/10 blur-[120px]"
       />
 
-      <div className="shell relative pb-32 pt-16 sm:pb-28 sm:pt-20">
+      <div className="shell relative pb-44 pt-16 sm:pb-32 sm:pt-20">
         <div className="mx-auto max-w-5xl md:border-x md:border-paper/10">
           <div className="grid gap-10 md:grid-cols-[1.5fr_0.8fr_0.8fr] md:gap-6 md:p-8">
             <div className="flex flex-col gap-5">
@@ -103,14 +102,14 @@ export function Footer() {
                 learners.
               </p>
               <SocialLinks tone="dark" />
-              <span className="inline-flex w-max items-center gap-2 rounded-full border border-paper/12 px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-paper/45">
+              <span className="inline-flex w-max items-center gap-2 rounded-full border border-paper/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-paper/60">
                 <span className="size-1.5 rounded-full bg-gold-400" aria-hidden="true" />
                 Independent accessibility tool
               </span>
             </div>
 
             <nav aria-label="Footer sections" className="flex flex-col gap-2">
-              <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-paper/35">Explore</p>
+              <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-paper/55">Explore</p>
               <FooterLink label="About us" id="about" onNavigate={scrollToSection} />
               <FooterLink label="Our app" id="app" onNavigate={scrollToSection} />
               <FooterLink label="Extension" id="extension" onNavigate={scrollToSection} />
@@ -118,7 +117,7 @@ export function Footer() {
             </nav>
 
             <nav aria-label="Footer destinations" className="flex flex-col gap-2">
-              <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-paper/35">Product</p>
+              <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-paper/55">Product</p>
               <FooterLink label="Open the app" href={links.app} onNavigate={scrollToSection} />
               <FooterLink
                 label="Get the extension"
@@ -131,14 +130,14 @@ export function Footer() {
           </div>
 
           <div className="border-t border-paper/10 px-0 py-5 md:px-8">
-            <p className="text-[11px] leading-relaxed text-paper/40">
+            <p className="text-[11px] leading-relaxed text-paper/55">
               Gyaansetu is an independent accessibility tool and is not affiliated with Physics
               Wallah, Unacademy or YouTube.
             </p>
           </div>
 
           <div className="flex flex-col gap-5 border-t border-paper/10 px-0 py-6 md:flex-row md:items-center md:justify-between md:px-8">
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-paper/40">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-paper/55">
               <p>© {year} Gyaansetu. All rights reserved.</p>
               <span className="hidden h-3 w-px bg-paper/15 sm:block" aria-hidden="true" />
               <p>Made for Indian classrooms</p>

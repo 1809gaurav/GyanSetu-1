@@ -17,5 +17,8 @@ dist-ssr/
 # QA screenshot artifacts
 .qa/
 
+# Source product brief (kept locally, not published with the site)
+GyanSetu.pdf
+
 # Logs
 *.log

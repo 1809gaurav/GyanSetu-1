@@ -36,13 +36,13 @@ export function SocialLinks({
         const palette =
           tone === "dark"
             ? "border-paper/15 bg-paper/[0.04] text-paper/70 hover:border-gold-300/50 hover:text-paper"
-            : "border-navy-900/12 bg-white/70 text-navy-800 hover:border-gold-600/50 hover:text-navy-900";
+            : "border-navy-900/10 bg-white/70 text-navy-800 hover:border-gold-600/50 hover:text-navy-900";
 
         return (
           <li key={key}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                {ready ? (
+            {ready ? (
+              <Tooltip>
+                <TooltipTrigger asChild>
                   <a
                     href={href}
                     {...externalLinkProps}
@@ -51,21 +51,20 @@ export function SocialLinks({
                   >
                     <Icon className="size-4" aria-hidden="true" />
                   </a>
-                ) : (
-                  <span
-                    aria-disabled="true"
-                    tabIndex={0}
-                    className={cn(base, palette, "cursor-not-allowed opacity-45")}
-                    aria-label={`${label} — link coming soon`}
-                  >
-                    <Icon className="size-4" aria-hidden="true" />
-                  </span>
-                )}
-              </TooltipTrigger>
-              <TooltipContent side="top">
-                {ready ? label : `${label} — link coming soon`}
-              </TooltipContent>
-            </Tooltip>
+                </TooltipTrigger>
+                <TooltipContent side="top">{label}</TooltipContent>
+              </Tooltip>
+            ) : (
+              <button
+                type="button"
+                disabled
+                aria-label={`${label} — link coming soon`}
+                title="Link coming soon"
+                className={cn(base, palette, "cursor-not-allowed opacity-45")}
+              >
+                <Icon className="size-4" aria-hidden="true" />
+              </button>
+            )}
           </li>
         );
       })}

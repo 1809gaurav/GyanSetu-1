@@ -119,7 +119,7 @@ export function AppShowcase() {
 
           <div
             aria-hidden="true"
-            className="relative overflow-hidden rounded-[1.6rem] border border-paper/12 bg-[#071026] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]"
+            className="relative overflow-hidden rounded-[1.6rem] border border-paper/10 bg-[#071026] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]"
           >
             <div className="flex items-center gap-2 border-b border-paper/10 px-4 py-3">
               <span className="size-2 rounded-full bg-[#E36A5A]/70" />
@@ -244,10 +244,10 @@ export function AppShowcase() {
                 </div>
 
                 <div className="flex gap-2">
-                  <span className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-paper/12 py-2 text-[10px] text-paper/55">
+                  <span className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-paper/10 py-2 text-[10px] text-paper/55">
                     <Download className="size-3" /> Export
                   </span>
-                  <span className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-paper/12 py-2 text-[10px] text-paper/55">
+                  <span className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-paper/10 py-2 text-[10px] text-paper/55">
                     <Trash2 className="size-3" /> Delete
                   </span>
                 </div>

@@ -124,6 +124,11 @@ export function About() {
                 </div>
               ))}
             </div>
+            {hackathonName && (
+              <span className="mt-6 inline-flex w-max items-center gap-2 rounded-full border border-gold-600/25 bg-gold-100 px-3 py-1.5 text-[11px] font-medium text-gold-700">
+                Built for {hackathonName}
+              </span>
+            )}
           </Reveal>
         </div>
 
@@ -133,6 +138,7 @@ export function About() {
             eyebrow="The problem"
             title="A lecture was never designed for every learner."
             className="max-w-xl"
+            as="h3"
           />
           <Stagger className="mt-10 grid gap-4 md:grid-cols-3">
             {problems.map(({ icon: Icon, title, body }) => (
@@ -156,6 +162,7 @@ export function About() {
             title="Four learners. Four different bridges."
             description="The same lecture, adapted four ways. Each profile changes how the page behaves, not what the teacher taught."
             className="max-w-2xl"
+            as="h3"
           />
           <Stagger className="mt-10 grid gap-4 sm:grid-cols-2">
             {audiences.map(({ icon: Icon, title, barrier, help }) => (
@@ -184,6 +191,7 @@ export function About() {
             eyebrow="Our values"
             title="What we refuse to trade away."
             className="max-w-sm"
+            as="h3"
           />
           <Stagger className="divide-y divide-navy-900/10 border-y border-navy-900/10">
             {values.map(({ icon: Icon, title, body }, index) => (
@@ -203,36 +211,24 @@ export function About() {
           </Stagger>
         </div>
 
-        {/* Team */}
-        <Reveal className="mt-20 lg:mt-24">
-          <div className="relative overflow-hidden rounded-[2rem] border border-navy-900/10 bg-white/60 p-7 sm:p-10">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-16 -top-16 size-64 rounded-full bg-gold-300/25 blur-3xl"
-            />
-            <div className="relative flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-              <div>
+        {/* Team — rendered only when real names exist in siteConfig. */}
+        {team.length > 0 && (
+          <Reveal className="mt-20 lg:mt-24">
+            <div className="relative overflow-hidden rounded-[2rem] border border-navy-900/10 bg-white/60 p-7 sm:p-10">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 size-64 rounded-full bg-gold-300/25 blur-3xl"
+              />
+              <div className="relative">
                 <p className="eyebrow">The team</p>
                 <h3 className="mt-4 font-display text-2xl text-navy-900 sm:text-3xl">
                   Built by students, for students.
                 </h3>
                 <p className="mt-2 max-w-lg text-[13.5px] leading-relaxed text-muted">
-                  Team profiles are being added. Want to be introduced? Add names, roles and links
-                  to the team array in{" "}
-                  <code className="rounded bg-navy-900/[0.06] px-1.5 py-0.5 font-mono text-[11.5px] text-navy-800">
-                    src/siteConfig.ts
-                  </code>
-                  .
+                  The people who research, design and build Gyaansetu.
                 </p>
               </div>
-              {hackathonName && (
-                <span className="inline-flex w-max items-center gap-2 rounded-full border border-gold-600/25 bg-gold-100 px-3 py-1.5 text-[11px] font-medium text-gold-700">
-                  Built for {hackathonName}
-                </span>
-              )}
-            </div>
 
-            {team.length > 0 ? (
               <ul className="relative mt-8 grid gap-3 sm:grid-cols-3">
                 {team.map((member) => (
                   <li
@@ -255,20 +251,9 @@ export function About() {
                   </li>
                 ))}
               </ul>
-            ) : (
-              <ul className="relative mt-8 flex flex-wrap gap-2">
-                {["Product", "Engineering", "Accessibility research", "Design"].map((role) => (
-                  <li
-                    key={role}
-                    className="rounded-full border border-navy-900/10 bg-paper px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-navy-800"
-                  >
-                    {role}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </Reveal>
+            </div>
+          </Reveal>
+        )}
       </div>
     </Section>
   );

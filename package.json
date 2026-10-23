@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Gyaansetu — the public website for an accessibility-first learning platform.",
+  "description": "Gyaansetu \u2014 the public website for an accessibility-first learning platform.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "qa": "node scripts/qa.mjs",
     "check-links": "node scripts/check-links.mjs"
   },
   "dependencies": {
@@ -32,7 +33,7 @@
     "react-dom": "^19.3.1",
     "tailwind-merge": "^3.7.0",
     "three": "^0.186.1",
-    "vgpu": "^0.3.1"
+    "vgpu": "0.3.1"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
@@ -48,5 +49,8 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.5",
     "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

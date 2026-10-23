@@ -121,38 +121,55 @@ function makeScreenTexture(onReady?: () => void): THREE.CanvasTexture {
 
 function makeKeyboardAlpha(): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
-  canvas.width = 1400;
-  canvas.height = 600;
+  canvas.width = 1600;
+  canvas.height = 780;
   const ctx = canvas.getContext("2d")!;
   ctx.fillStyle = "#000";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  const cols = 14;
-  const rows = 5;
-  const gap = 10;
+  const cols = 15;
+  const rows = 6;
+  const gap = 9;
+  const deckHeight = 500;
   const keyW = (canvas.width - gap * (cols + 1)) / cols;
-  const keyH = (canvas.height - gap * (rows + 1)) / rows;
+  const keyH = (deckHeight - gap * (rows + 1)) / rows;
 
   for (let row = 0; row < rows; row += 1) {
     for (let col = 0; col < cols; col += 1) {
       const x = gap + col * (keyW + gap);
       const y = gap + row * (keyH + gap);
-      const r = 8;
-      ctx.fillStyle = row === rows - 1 && col === 6 ? "#b9b9b9" : row === 0 ? "#bcbcbc" : "#d6d6d6";
+      ctx.fillStyle = row === 0 ? "#f2f2f2" : row === rows - 1 ? "#c9c9c9" : "#e4e4e4";
       ctx.beginPath();
-      ctx.roundRect(x, y, keyW, keyH, r);
+      ctx.roundRect(x, y, keyW, keyH, 7);
       ctx.fill();
     }
   }
 
   // Spacebar
-  ctx.fillStyle = "#e2e2e2";
+  ctx.fillStyle = "#f6f6f6";
   ctx.beginPath();
-  ctx.roundRect(gap + 4 * (keyW + gap), gap + 4 * (keyH + gap), keyW * 4 + gap * 3, keyH, 8);
+  ctx.roundRect(
+    gap + 5 * (keyW + gap),
+    gap + 5 * (keyH + gap),
+    keyW * 5 + gap * 4,
+    keyH,
+    7,
+  );
+  ctx.fill();
+
+  // Trackpad, outlined by the transparent gap so it reads against the deck.
+  ctx.fillStyle = "#000";
+  ctx.beginPath();
+  ctx.roundRect(520, 560, 560, 180, 24);
+  ctx.fill();
+  ctx.fillStyle = "#ededed";
+  ctx.beginPath();
+  ctx.roundRect(528, 568, 544, 164, 18);
   ctx.fill();
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 8;
   return texture;
 }
 
@@ -216,6 +233,7 @@ export function MacBook({ className }: { className?: string }) {
     const bottomGroup = new THREE.Group();
     macGroup.add(lidGroup, bottomGroup);
 
+    const keyboardTexture = makeKeyboardAlpha();
     const materials = {
       shell: new THREE.MeshStandardMaterial({ color: 0xe9e1d3, metalness: 0.72, roughness: 0.38 }),
       dark: new THREE.MeshStandardMaterial({ color: 0x0b1733, metalness: 0.35, roughness: 0.62 }),
@@ -225,7 +243,7 @@ export function MacBook({ className }: { className?: string }) {
         color: 0x0e1b3a,
         metalness: 0.25,
         roughness: 0.7,
-        alphaMap: makeKeyboardAlpha(),
+        alphaMap: keyboardTexture,
         transparent: true,
       }),
     };
@@ -288,11 +306,11 @@ export function MacBook({ className }: { className?: string }) {
         lidGroup.add(backScreen);
 
         const keyboard = new THREE.Mesh(
-          new THREE.PlaneGeometry(27.7, 11.6),
+          new THREE.PlaneGeometry(26.2, 11.2),
           materials.keyboard,
         );
         keyboard.rotation.set(-Math.PI / 2, 0, 0);
-        keyboard.position.set(0, 0.045, 7.21);
+        keyboard.position.set(0, 0.045, 6.9);
         bottomGroup.add(keyboard);
 
         const applyFinal = () => {
@@ -419,6 +437,7 @@ export function MacBook({ className }: { className?: string }) {
         else if (material) (material as THREE.Material).dispose();
       });
       screenTexture.dispose();
+      keyboardTexture.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     };

@@ -6,8 +6,8 @@ await mkdir(outDir, { recursive: true });
 
 const browser = await chromium.launch({
   headless: true,
-  executablePath:
-    "/Users/sakshamchauhan/Library/Caches/ms-playwright/chromium-1223/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  // Set CHROMIUM_PATH only if you need a specific local build.
+  executablePath: process.env.CHROMIUM_PATH || undefined,
   args: ["--enable-unsafe-webgpu", "--use-angle=metal"],
 });
 
@@ -42,7 +42,24 @@ async function run(width, height, label) {
     await page.screenshot({ path: new URL(`${label}-${id}.png`, outDir).pathname });
   }
 
-  console.log(label, JSON.stringify(support), errors.length ? errors : "no errors");
+  await page.mouse.wheel(0, 2400);
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: new URL(`${label}-footer.png`, outDir).pathname });
+
+  if (label === "mobile") {
+    await page.getByRole("button", { name: "Open navigation menu" }).click();
+    await page.waitForTimeout(700);
+    await page.screenshot({ path: new URL("mobile-menu.png", outDir).pathname });
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(400);
+  }
+
+  const overflow = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    innerWidth: window.innerWidth,
+  }));
+
+  console.log(label, JSON.stringify(support), JSON.stringify(overflow), errors.length ? errors : "no errors");
   await page.close();
 }
 

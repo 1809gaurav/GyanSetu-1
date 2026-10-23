@@ -16,7 +16,7 @@ export function LogoMark({
   return (
     <span
       className={cn(
-        "relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[28%] bg-paper ring-1 ring-navy-900/12",
+        "relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[28%] border border-navy-900/10 bg-paper",
         className,
       )}
       style={{ width: size, height: size }}

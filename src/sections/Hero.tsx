@@ -1,4 +1,4 @@
-import { ArrowDown, Check, Focus, Sparkles, Volume2 } from "lucide-react";
+import { ArrowDown, Check, Focus, Sparkles } from "lucide-react";
 import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import { AeroBackdrop } from "@/components/AeroBackdrop";
@@ -63,7 +63,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-navy-900/12 bg-white/70 px-3 py-1.5 text-[11px] font-medium tracking-wide text-navy-900 shadow-sm backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-navy-900/10 bg-white/70 px-3 py-1.5 text-[11px] font-medium tracking-wide text-navy-900 shadow-sm backdrop-blur">
               <Sparkles className="size-3.5 text-gold-600" aria-hidden="true" />
               Accessibility-first learning
             </span>
@@ -80,6 +80,7 @@ export function Hero() {
             id="hero-title"
             data-section-heading
             tabIndex={-1}
+            aria-label={`${platform.tagline} ${platform.taglineSecond}`}
             className="mt-6 font-display text-[clamp(2.45rem,6.4vw,4.9rem)] font-medium leading-[0.98] tracking-[-0.03em] text-navy-900 focus:outline-none sm:mt-7"
           >
             <span className="block overflow-hidden pb-1">
@@ -198,22 +199,6 @@ export function Hero() {
               <span className="ml-2 rounded-full bg-gold-100 px-1.5 py-0.5 text-[9px] uppercase tracking-wider text-gold-700">
                 on
               </span>
-            </span>
-          </motion.div>
-
-          <motion.div
-            aria-hidden="true"
-            className="absolute -left-2 bottom-2 hidden items-center gap-2 rounded-2xl border border-navy-900/10 bg-white/85 px-3.5 py-2.5 shadow-soft backdrop-blur-md sm:flex"
-            initial={reduced ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.75, duration: 0.7 }}
-          >
-            <span className="flex size-7 items-center justify-center rounded-full bg-gold-400 text-navy-950">
-              <Volume2 className="size-3.5" />
-            </span>
-            <span className="text-[11px] font-medium text-navy-900">
-              Read Screen
-              <span className="ml-2 text-[10px] font-normal text-muted">frame 04:12</span>
             </span>
           </motion.div>
         </motion.div>

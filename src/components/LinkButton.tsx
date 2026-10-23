@@ -32,7 +32,7 @@ export function LinkButton({
 
   if (!ready) {
     return (
-      <span className="inline-flex flex-col items-start gap-1.5">
+      <>
         <Button
           type="button"
           variant={variant}
@@ -54,7 +54,7 @@ export function LinkButton({
         <span id={descriptionId} className="sr-only">
           {note}. This destination has not been configured yet.
         </span>
-      </span>
+      </>
     );
   }
 

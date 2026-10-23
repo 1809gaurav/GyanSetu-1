@@ -51,7 +51,7 @@ export function Header() {
           className={cn(
             "relative flex h-16 items-center justify-between gap-4 rounded-full border px-3 transition-all duration-500 sm:px-4",
             scrolled
-              ? "border-navy-900/10 bg-paper/80 shadow-soft backdrop-blur-xl"
+              ? "border-navy-900/10 bg-paper/95 shadow-soft backdrop-blur-xl"
               : "border-transparent bg-transparent",
           )}
         >
@@ -118,7 +118,7 @@ export function Header() {
                 <SheetDescription className="sr-only">
                   Jump to a section of the Gyaansetu website.
                 </SheetDescription>
-                <div className="flex flex-col gap-8 pt-1">
+                <div className="flex h-full flex-col gap-8 pt-1">
                   <div className="flex items-center gap-3">
                     <LogoMark size={44} priority />
                     <Wordmark />
@@ -140,11 +140,26 @@ export function Header() {
                       </a>
                     ))}
                   </nav>
-                  <LinkButton href={links.app} label="Open the app" size="lg" variant="gold" />
-                  <p className="text-xs leading-relaxed text-muted">
-                    Gyaansetu is an independent accessibility tool and is not affiliated with
-                    Physics Wallah, Unacademy or YouTube.
-                  </p>
+                  <div className="mt-auto space-y-6">
+                    <div className="border-t border-navy-900/10 pt-6">
+                      <p className="font-display text-[22px] leading-snug text-navy-900">
+                        Knowledge should reach{" "}
+                        <span className="italic text-gold-700">everyone.</span>
+                      </p>
+                      <p className="mt-1 text-xs text-muted">We build the bridge.</p>
+                    </div>
+                    <LinkButton
+                      href={links.app}
+                      label="Open the app"
+                      size="lg"
+                      variant="gold"
+                      className="w-full"
+                    />
+                    <p className="text-xs leading-relaxed text-muted">
+                      Gyaansetu is an independent accessibility tool and is not affiliated with
+                      Physics Wallah, Unacademy or YouTube.
+                    </p>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
