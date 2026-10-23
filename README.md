@@ -8,7 +8,7 @@ content-first sections. Every outbound destination is configurable. Until a real
 the UI shows an honest disabled “Soon” state — there are no `href="#"` links and no invented
 destinations.
 
-- Repository: <https://github.com/Sakshamxx/GyanSetu>
+- Repository: <https://github.com/1809gaurav/GyanSetu-1> (the old `Sakshamxx/GyanSetu` URL redirects here)
 - Deployment target: Vercel (static Vite build)
 
 ## Stack
@@ -156,7 +156,7 @@ Set `CHROMIUM_PATH` to use a specific Chromium build.
 ## Deploying on Vercel
 
 1. In Vercel, choose **Add New → Project** and import
-   [`Sakshamxx/GyanSetu`](https://github.com/Sakshamxx/GyanSetu).
+   [`1809gaurav/GyanSetu-1`](https://github.com/1809gaurav/GyanSetu-1).
 2. Vercel detects Vite. The checked-in `vercel.json` sets:
    - build command `npm run build`
    - output directory `dist`
